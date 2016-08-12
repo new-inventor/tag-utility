@@ -1,0 +1,30 @@
+{
+  "name": "new-inventor/tag-utility",
+  "description": "tag builder",
+  "keywords": ["tag", "attribute"],
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Georgy Ionov",
+      "email": "newinventor20@gmail.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "NewInventor\\TagUtility\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "require-dev": {
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~4.0",
+    "symfony/css-selector": "2.8.*|3.0.*",
+    "symfony/dom-crawler": "2.8.*|3.0.*"
+  }
+}
