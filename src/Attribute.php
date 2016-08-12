@@ -18,13 +18,13 @@ class Attribute extends Object
     ];
 
     /**
-     * Attr constructor.
+     * Attribute constructor.
      * @param string $name
-     * @param $value
+     * @param string $value
      */
-    public function __construct(string $name, $value = '', array $params = [])
+    public function __construct(string $name, $value = '')
     {
-        parent::__construct($name, $params);
+        parent::__construct($name);
         $this->value = $value;
     }
 
@@ -98,6 +98,6 @@ class Attribute extends Object
     public static function __callStatic($name, $arguments)
     {
         $name = self::normalizeName($name);
-        return new Attribute($name, $arguments[0] ?? '', $arguments[1] ?? []);
+        return new Attribute($name, $arguments[0] ?? '');
     }
 }

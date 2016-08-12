@@ -20,12 +20,11 @@ class Object
     /**
      * Object constructor.
      * @param string $name
-     * @param array $params
      */
-    public function __construct(string $name, array $params = [])
+    public function __construct(string $name)
     {
         $this->name = $name;
-        $this->applyParams($params);
+        $this->applyParams([]);
     }
 
 
@@ -50,6 +49,11 @@ class Object
     public function short()
     {
         $this->params['short'] = true;
+        return $this;
+    }
+
+    public function options(array $options){
+        $this->applyParams($options);
         return $this;
     }
 }
