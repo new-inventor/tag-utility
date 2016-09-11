@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 
 namespace NewInventor\TagUtility;
 
@@ -296,7 +295,7 @@ use NewInventor\TagUtility\Exception\TagToTextAddition;
  * @method Tag preload($value, array $params = [])
  */
 
-class Tag extends Object
+class Tag extends Obj
 {
     const TAG = 1;
     const TEXT = 2;
@@ -316,7 +315,7 @@ class Tag extends Object
      * @param string $name
      * @param Tag[] $tags
      */
-    public function __construct(string $name, array $tags = [])
+    public function __construct($name, array $tags = [])
     {
         parent::__construct($name);
         $this->children = $tags;
@@ -328,7 +327,7 @@ class Tag extends Object
      * @param $tags
      * @return Tag
      */
-    public static function __callStatic(string $tagName, array $tags = [])
+    public static function __callStatic($tagName, array $tags = [])
     {
         return new Tag($tagName, $tags);
     }
@@ -338,10 +337,10 @@ class Tag extends Object
      * @param $arguments
      * @return Tag
      */
-    public function __call(string $attrName, array $arguments = [])
+    public function __call($attrName, array $arguments = [])
     {
-        $attr = new Attribute($attrName, $arguments[0] ?? '');
-        $attr->options($arguments[1] ?? []);
+        $attr = new Attribute($attrName, isset($arguments[0]) ? $arguments[0] : '');
+        $attr->options(isset($arguments[1]) ? $arguments[1] : []);
         $this->attrs[] = $attr;
         return $this;
     }
@@ -350,7 +349,7 @@ class Tag extends Object
      * @param string $text
      * @return Tag
      */
-    public static function text(string $text = '')
+    public static function text($text = '')
     {
         $tag = new Tag('text');
         $tag->options(['type' => self::TEXT]);
@@ -402,7 +401,7 @@ class Tag extends Object
     /**
      * @param string $text
      */
-    private function setPlainText(string $text)
+    private function setPlainText($text)
     {
         $this->plainText = $text;
     }

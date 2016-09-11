@@ -1,10 +1,9 @@
 <?php
-declare(strict_types = 1);
 
 namespace NewInventor\TagUtility;
 
 
-class Attribute extends Object
+class Attribute extends Obj
 {
     /** @var \Closure|mixed */
     protected $value;
@@ -22,7 +21,7 @@ class Attribute extends Object
      * @param string $name
      * @param string $value
      */
-    public function __construct(string $name, $value = '')
+    public function __construct($name, $value = '')
     {
         parent::__construct($name);
         $this->value = $value;
@@ -50,7 +49,7 @@ class Attribute extends Object
     /**
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         if ($this->value instanceof \Closure) {
             $valueMethod = $this->value;
@@ -98,6 +97,6 @@ class Attribute extends Object
     public static function __callStatic($name, $arguments)
     {
         $name = self::normalizeName($name);
-        return new Attribute($name, $arguments[0] ?? '');
+        return new Attribute($name, isset($arguments[0]) ? $arguments[0] : '');
     }
 }
